@@ -115,6 +115,7 @@ pub enum FlushDecompress {
 #[derive(Clone, Debug)]
 pub(crate) enum DecompressErrorInner {
     General { msg: ErrorMessage },
+    #[allow(dead_code)]
     NeedsDictionary(u32),
 }
 
@@ -142,6 +143,7 @@ pub(crate) fn decompress_failed<T>(msg: ErrorMessage) -> Result<T, DecompressErr
 }
 
 #[inline]
+#[allow(dead_code)]
 pub(crate) fn decompress_need_dict<T>(adler: u32) -> Result<T, DecompressError> {
     Err(DecompressError(DecompressErrorInner::NeedsDictionary(
         adler,
@@ -156,6 +158,7 @@ pub struct CompressError {
 }
 
 #[inline]
+#[allow(dead_code)]
 pub(crate) fn compress_failed<T>(msg: ErrorMessage) -> Result<T, CompressError> {
     Err(CompressError { msg })
 }
